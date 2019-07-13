@@ -4,8 +4,9 @@
         <div class="footer-left">
           <a href="/#/"><img src="../../assets/images/logo.png" class="logo" /></a>
           <div class="companyInfo">
-            <p class="comp-phone">联系电话：0755-25320456</p>
-            <p class="comp-name">公司名称：深圳市梦宝智能科技有限公司</p>
+            <p class="comp-phone">ShenZhen xxx Technology Co., Ltd</p>
+            <p class="comp-name">客服电话 400-888-8888</p>
+            <p>深圳市xxx科技有限公司</p>
           </div>
         </div>
         <div class="footer-right">
@@ -74,7 +75,7 @@ export default {
 }
 </script>
 <style scoped lang="less">
-  .footer{width: 100%;padding-top: 50px;background: #fff;padding-bottom: 18px;}
+  .footer{width: 100%;padding-top: 30px;background: #fff;padding-bottom: 18px;border-top: 1px solid #f4f4f4;margin-top: 50px;}
   .footer .footer-content{margin: 0 auto;width: 1050px;padding-bottom: 20px;}
   .footer .footer-left{float: left;}
   .footer .footer-right{float: right;}

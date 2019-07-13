@@ -3,3 +3,55 @@
 @menu-dark-title: #001529;
 @menu-dark-active-bg: #000c17;
 @layout-sider-background: #001529;
+//改变iview样式
+.ivu-tabs.ivu-tabs-card{
+  margin-top: 40px;color: #191919;
+  .ivu-tabs-bar{
+    border-bottom: 0;margin-bottom: 26px;
+  }
+  .ivu-tabs-content{
+    align-items: start;
+  }
+  .ivu-tabs-nav-container{
+    height: auto !important;
+    overflow: visible;
+    .ivu-tabs-nav-wrap{
+      overflow: visible;
+    }
+  }
+  .ivu-tabs-nav-scroll{
+    text-align: center;overflow: visible;
+    .ivu-tabs-nav{
+      float: none;display: inline-block;
+      border-left: 1px solid #ececec;
+    }
+    .ivu-tabs-tab{
+      border-radius: 0;
+      background: #fff;
+      font-size: 16px;color: #000;
+      margin-right: 0;width: 167px;padding: 0;height: 44px;line-height: 44px;
+      position: relative;
+      border: 1px solid #ececec;
+      border-left: 0;
+    }
+    .ivu-tabs-tab:after{
+      //content: '';
+      //height: 44px;width: 1px;background: #ececec;
+      //position: absolute;
+      //right: 0;top: 0;
+    }
+    .ivu-tabs-tab-active{
+      background: #5f2bd9;
+      color: #fff;
+    }
+    .ivu-tabs-tab-active:after{
+      content: '';position: absolute;
+      bottom: -18px;left: 50%;margin-left: -5px;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color:#5f2bd9 transparent transparent transparent;
+    }
+  }
+}

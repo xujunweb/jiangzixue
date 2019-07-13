@@ -1,29 +1,20 @@
 <template>
     <div>
-      <div class="banner">
-        <indexHeader></indexHeader>
-        <!--<Carousel autoplay v-model="imgindex" loop class="home-banner" :autoplay-speed="speed">-->
-          <!--<CarouselItem v-for="item in imglist">-->
-            <!--<div class="demo-carousel">-->
-              <!--<img :src="item"/>-->
-            <!--</div>-->
-          <!--</CarouselItem>-->
-        <!--</Carousel>-->
+      <indexHeader :banner="banner.indexbanner">
         <div class="banner-content">
           <div class="big-title">玩游戏学乐器，就上酱子学APP</div>
           <div class="big-button">立即体验</div>
         </div>
-      </div>
+      </indexHeader>
       <indexFooter></indexFooter>
     </div>
 </template>
 
 <script>
-import imgsrc from  '@/assets/images/banner.png'
-import banner1 from '@/assets/images/banner1.jpg'
 import indexFooter from '@/components/footer/footer.vue'
 import indexHeader from '@/components/header/header.vue'
 import { getAllinfo } from  '@/api/user'
+import { mapGetters } from 'vuex'
 export default {
   name: "index",
   components:{
@@ -37,6 +28,11 @@ export default {
 
       ]
     }
+  },
+  computed:{
+    ...mapGetters({
+      banner:'getBanner'
+    })
   },
   created(){
     this.getAllinfo()
@@ -56,24 +52,6 @@ export default {
 </script>
 
 <style lang="less">
-.banner{
-  width: 100%;height: 760px;position: relative;background: #BFBFBF;overflow: hidden;
-  .banner-content{
-    text-align: center;margin-top: 315px;
-    .big-title{
-      font-size: 52px;color: #fff;line-height: 70px;
-      text-shadow: 0px 0px 16px 0px rgba(123, 123, 123, 0.33);
-    }
-    .big-button{
-      background: rgba(0,0,0,0.6);width: 273px;height: 82px;
-      line-height: 82px;border-radius: 8px;
-      font-size: 30px;
-      color: #fff;
-      margin: 0 auto;
-      margin-top: 40px;
-    }
-  }
-}
 .ivu-carousel-dots li button{
   background: #fff;
   width: 6px;
