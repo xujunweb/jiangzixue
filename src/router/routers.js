@@ -56,6 +56,15 @@ export default [
     component: () => import('@/view/product/product.vue')
   },
   {
+    path: '/coop',
+    name: 'coop',
+    meta: {
+      hideInMenu: true,
+      notCache: true
+    },
+    component: () => import('@/view/coop/coop.vue')
+  },
+  {
     path: '/401',
     name: 'error_401',
     meta: {

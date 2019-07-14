@@ -151,10 +151,6 @@ export default {
     .big-title{
       letter-spacing: 10px;
     }
-    .title-tip{
-      text-shadow: 0px 0px 16px #544a4a;
-      font-size: 33px;line-height: 40px;color: #fff;
-    }
   }
   .about-content{
     width: 1040px;margin: 0 auto;

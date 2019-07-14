@@ -70,9 +70,9 @@ export default {
   data(){
     return{
       tablist:[
-        {name:'产品',herf:'home',select:false},
+        {name:'产品',herf:'product',select:false},
         {name:'关于我们',herf:'about',select:false},
-        {name:'合作',herf:'jointwork',select:false},
+        {name:'合作',herf:'coop',select:false},
       ],
     }
   },
@@ -94,6 +94,10 @@ export default {
       .big-title{
         font-size: 52px;color: #fff;line-height: 70px;
         text-shadow: 0px 0px 16px #544a4a;
+      }
+      .title-tip{
+        text-shadow: 0px 0px 16px #544a4a;
+        font-size: 33px;line-height: 40px;color: #fff;
       }
       .big-button{
         text-align: center;
