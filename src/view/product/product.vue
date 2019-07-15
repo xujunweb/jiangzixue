@@ -79,6 +79,9 @@
       })
     },
     created(){
+      if(this.$route.query.type){
+        this.tabValue=''+this.$route.query.type
+      }
       // this.getAllinfo()
       setTimeout(()=>{
         this.total = 50

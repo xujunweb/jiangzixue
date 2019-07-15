@@ -13,31 +13,31 @@
           <ul class="footer-list">
             <li class="first-list"><h4>关于我们</h4></li>
             <li class="list">
-              <a href="/#/">公司简介</a>
+              <a href="/#/about?type=1">公司简介</a>
             </li>
             <li class="list">
-              <a href="/#/">创始人</a>
+              <a href="/#/about?type=2">创始人</a>
             </li>
           </ul>
           <ul class="footer-list">
             <li class="first-list"><h4>产品</h4></li>
             <li class="list">
-              <a href="/#/">非洲鼓</a>
+              <a href="/#/product">非洲鼓</a>
             </li>
             <li class="list">
-              <a href="/#/">吉他</a>
+              <a href="/#/product">吉他</a>
             </li>
             <li class="list">
-              <a href="/#/">钢琴</a>
+              <a href="/#/product">钢琴</a>
             </li>
           </ul>
           <ul class="footer-list">
             <li class="first-list"><h4>合作</h4></li>
             <li class="list">
-              <a href="/#/about">供应商</a>
+              <a href="/#/coop">供应商</a>
             </li>
             <li class="list">
-              <a href="/#/">联系我们</a>
+              <a href="/#/about?type=3">联系我们</a>
             </li>
           </ul>
           <div class="clear"></div>

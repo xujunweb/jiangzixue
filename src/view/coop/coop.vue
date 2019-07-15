@@ -33,28 +33,28 @@
         <h3 class="h3-title">主要功能</h3>
         <ul class="func-ul">
           <li>
-            <img src="../../assets/images/func1.png">
+            <div><img src="../../assets/images/func1.png"></div>
             <p>帮助机构教<br/>学方式升级</p>
           </li>
           <li>
-            <img src="../../assets/images/func2.png">
+            <div><img src="../../assets/images/func2.png"></div>
             <p>帮助学生提<br/>高学习兴趣</p>
           </li>
           <li>
-            <img src="../../assets/images/func3.png">
-            <p>帮助机构教<br/>学方式升级</p>
+            <div><img src="../../assets/images/func3.png"></div>
+            <p>帮助学生有事不来机<br/>构也可以完成作业</p>
           </li>
           <li>
-            <img src="../../assets/images/func4.png">
-            <p>帮助机构教<br/>学方式升级</p>
+            <div><img src="../../assets/images/func4.png"></div>
+            <p>帮助机构留存<br/>老师教学内容</p>
           </li>
           <li>
-            <img src="../../assets/images/func5.png">
-            <p>帮助机构教<br/>学方式升级</p>
+            <div><img src="../../assets/images/func5.png"></div>
+            <p>解决学员<br/>在线管控</p>
           </li>
           <li>
-            <img src="../../assets/images/func6.png">
-            <p>帮助机构教<br/>学方式升级</p>
+            <div><img src="../../assets/images/func6.png"></div>
+            <p>解决机构<br/>推广招生</p>
           </li>
         </ul>
       </div>
@@ -64,7 +64,38 @@
         <h4>无需繁琐流程，创业只需散步：留言咨询 > 等待回访 > 成功合作</h4>
       </div>
       <div class="from-content">
-
+        <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" :inline="true">
+          <FormItem label="姓名：" prop="name">
+            <Input v-model="formValidate.name" placeholder="请输入姓名" class="input"></Input>
+          </FormItem>
+          <FormItem label="性别：" prop="gender" class="hidelabel mr">
+            <RadioGroup v-model="formValidate.gender">
+              <Radio label="1">男</Radio>
+              <Radio label="0">女</Radio>
+            </RadioGroup>
+          </FormItem>
+          <FormItem label="地区：" prop="city">
+            <Input v-model="formValidate.city" placeholder="请输入地区" class="input"></Input>
+          </FormItem>
+          <FormItem label="手机：" prop="phone" class="mrm">
+            <Input v-model="formValidate.phone" placeholder="请输入手机号" class="input"></Input>
+          </FormItem>
+          <FormItem label="QQ：" prop="qq">
+            <Input v-model="formValidate.qq" placeholder="请输入QQ" class="input"></Input>
+          </FormItem>
+          <FormItem label="邮箱：" prop="mail">
+            <Input v-model="formValidate.mail" placeholder="请输入邮箱" class="input"></Input>
+          </FormItem>
+          <div>
+            <FormItem label="留言：" prop="desc" class="block">
+              <Input v-model="formValidate.desc" type="textarea" :rows="5" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入留言"></Input>
+            </FormItem>
+          </div>
+          <FormItem class="botton-item">
+            <Button type="primary" @click="handleSubmit('formValidate')">提交咨询</Button>
+            <!--<Button @click="handleReset('formValidate')" style="margin-left: 8px">Reset</Button>-->
+          </FormItem>
+        </Form>
       </div>
     </div>
     <indexFooter></indexFooter>
@@ -78,7 +109,27 @@ export default {
   name: "coop",
   data (){
     return {
-      selectIndex:2
+      selectIndex:2,
+      formValidate: {
+        name: '',
+        mail: '',
+        city: '',
+        gender: '1',
+        phone: '',
+        qq:'',
+        desc: ''
+      },
+      ruleValidate: {
+        name: [
+          { required: true, message: '请填写姓名', trigger: 'blur' }
+        ],
+        phone: [
+          { required: true, message: '请输入手机号', trigger: 'blur' },
+        ],
+        desc: [
+          { required: true, message: '请输入留言', trigger: 'blur' },
+        ]
+      }
     }
   },
   components:{
@@ -89,9 +140,63 @@ export default {
       banner:'getBanner'
     })
   },
+  methods:{
+    handleSubmit (name) {
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.$Message.success('Success!');
+        } else {
+          this.$Message.error('Fail!');
+        }
+      })
+    },
+    handleReset (name) {
+      this.$refs[name].resetFields();
+    }
+  }
 }
 </script>
-
+<style lang="less">
+  .hidelabel{
+    .ivu-form-item-label{display: none;}
+    .ivu-form-item-content{margin-left: 10px !important;}
+  }
+  .ivu-form{
+    margin-top: 40px;
+    .ivu-form-item-label{
+      font-size: 16px;color: #000;padding-top: 12px;
+    }
+    .ivu-radio-wrapper{
+      font-size: 16px;
+    }
+    .ivu-form-item.block{
+      display: block;margin-right: 30px;
+    }
+    .ivu-form-item.botton-item{
+      display: block;text-align: center;margin-right: 0;
+      .ivu-form-item-content{margin-left: 0 !important;margin-right: 0;}
+    }
+    .block{
+      .ivu-input-wrapper{
+        textarea{
+          height: 150px !important;
+        }
+      }
+    }
+    .ivu-btn-primary{
+      background: #5f2bd9;width: 188px;height: 55px;text-align: center;
+      font-size: 24px;
+    }
+  }
+  .input{
+    width: 250px;
+    .ivu-input{height: 40px;}
+  }
+  .ivu-form-inline{
+    .mr{margin-right: 246px;}
+    /*.mrm{margin-right: 250px;}*/
+  }
+</style>
 <style scoped lang="less">
   .banner-content{
     .big-title{
@@ -139,7 +244,7 @@ export default {
     .func{
       .h3-title{
         font-size: 36px;line-height: 48px;text-align: center;
-        position: relative;padding-bottom: 10px;margin-top: 50px;margin-bottom: 50px;
+        position: relative;padding-bottom: 10px;margin-top: 50px;margin-bottom: 40px;
       }
       .h3-title:after{
         content: '';position: absolute;left: 50%;bottom: 0;
@@ -149,6 +254,7 @@ export default {
         display: flex;justify-content: space-around;
         li{
           text-align: center;
+          div{display: flex;justify-content: center;align-items: flex-end;height: 66px;}
           p{
             color: #363636;font-size: 16px;line-height: 24px;margin-top: 20px;
           }

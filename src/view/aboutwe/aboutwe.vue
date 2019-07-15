@@ -8,12 +8,12 @@
       </indexHeader>
       <div class="about-content">
         <Tabs :value="tabValue" type="card" @on-click="clickTab">
-          <TabPane label="公司简介" name="name1"></TabPane>
-          <TabPane label="创始人" name="name2"></TabPane>
-          <TabPane label="加入我们" name="name3"></TabPane>
-          <TabPane label="联系我们" name="name4"></TabPane>
+          <TabPane label="公司简介" name="1"></TabPane>
+          <TabPane label="创始人" name="2"></TabPane>
+          <TabPane label="加入我们" name="3"></TabPane>
+          <TabPane label="联系我们" name="4"></TabPane>
         </Tabs>
-        <div label="公司简介" name="name1" v-if="tabValue=='name1'">
+        <div label="公司简介" name="1" v-if="tabValue=='1'">
           <div class="tab-content">
             <div class="padding-content">
               <img src="" class="introduce-img"/>
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div label="创始人" name="name2" v-if="tabValue=='name2'">
+        <div label="创始人" name="2" v-if="tabValue=='2'">
           <div class="tab-content">
             <div class="padding-content">
               <div class="toux">
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-        <div label="加入我们" name="name3" v-if="tabValue=='name3'">
+        <div label="加入我们" name="3" v-if="tabValue=='3'">
           <div class="tab-content">
             <img src="../../assets/images/joinme.png"/>
             <div class="padding-content">
@@ -61,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div label="联系我们" name="name4" v-if="tabValue=='name4'">
+        <div label="联系我们" name="4" v-if="tabValue=='4'">
           <div class="tab-content">
 
           </div>
@@ -136,6 +136,9 @@ export default {
       this.postList[i].requirement = this.postList[i].requirement.split("\n").join("<br/>")
       this.postList[i].develop = this.postList[i].develop.split("\n").join("<br/>")
       this.postList[i].welfare = this.postList[i].welfare.split("\n").join("<br/>")
+    }
+    if(this.$route.query.type){
+      this.tabValue=''+this.$route.query.type
     }
   },
   methods:{

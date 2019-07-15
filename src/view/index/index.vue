@@ -3,7 +3,9 @@
       <indexHeader :banner="banner.indexbanner">
         <div class="banner-content">
           <div class="big-title">玩游戏学乐器，就上酱子学APP</div>
-          <div class="big-button">立即体验</div>
+          <router-link to="jointwork" class="big-button">
+            立即体验
+          </router-link>
         </div>
       </indexHeader>
       <indexFooter></indexFooter>
