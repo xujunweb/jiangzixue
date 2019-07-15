@@ -26,7 +26,7 @@ html,body{
   color: #191919;
 }
 h1,h2,h3,h4,h5,h6{
-  font-family: '微软雅黑';
+  font-family: '微软雅黑';font-weight: normal;
 }
 ul,li,input{
   outline: none;

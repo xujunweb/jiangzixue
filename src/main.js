@@ -9,6 +9,7 @@ import i18n from '@/locale'
 import config from '@/config'
 import importDirective from '@/directive'
 import filter from '@/libs/filter'
+import Vuelidate from 'vuelidate'
 import 'iview/dist/styles/iview.css'
 import './index.less'
 import '@/assets/icons/iconfont.css'
@@ -20,6 +21,7 @@ filter.install(Vue)
 Vue.use(iView, {
   i18n: (key, value) => i18n.t(key, value)
 })
+Vue.use(Vuelidate)
 Vue.config.productionTip = false
 /**
  * @description 全局注册应用配置
