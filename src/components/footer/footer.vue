@@ -22,13 +22,13 @@
           <ul class="footer-list">
             <li class="first-list"><h4>产品</h4></li>
             <li class="list">
-              <a href="/#/product">非洲鼓</a>
+              <a href="/#/product?type=1">非洲鼓</a>
             </li>
             <li class="list">
-              <a href="/#/product">吉他</a>
+              <a href="/#/product?type=2">吉他</a>
             </li>
             <li class="list">
-              <a href="/#/product">钢琴</a>
+              <a href="/#/product?type=3">钢琴</a>
             </li>
           </ul>
           <ul class="footer-list">

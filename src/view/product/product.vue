@@ -81,6 +81,8 @@
     created(){
       if(this.$route.query.type){
         this.tabValue=''+this.$route.query.type
+      }else {
+        this.tabValue = '1'
       }
       // this.getAllinfo()
       setTimeout(()=>{
