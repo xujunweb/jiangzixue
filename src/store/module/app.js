@@ -22,5 +22,13 @@ export default {
     updateBanner (state, banner) {
       state.banner = banner
     },
+  },
+  actions:{
+    getAllinfo (store,obj) {
+      getAllinfo().then((data)=>{
+        console.log('获取到所有配置',data)
+        store.commit('updateBanner',data)
+      })
+    }
   }
 }
