@@ -31,7 +31,6 @@ Vue.prototype.$config = config
  * 注册指令
  */
 importDirective(Vue)
-
 /* eslint-disable no-new */
 window.app = new Vue({
   el: '#app',
@@ -40,3 +39,5 @@ window.app = new Vue({
   store,
   render: h => h(App)
 })
+//项目启动时就请求所有配置
+store.dispatch('getAllinfo')

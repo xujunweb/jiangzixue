@@ -37,7 +37,7 @@ export default {
     })
   },
   created(){
-    this.getAllinfo()
+    // this.getAllinfo()
   },
   methods:{
     getAllinfo () {

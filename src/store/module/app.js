@@ -3,6 +3,7 @@ import aboutbanner from '../../assets/images/about_me.png'
 import productbanner from '../../assets/images/product_banner.png'
 import hezuobanner from '../../assets/images/hezuo.png'
 import appbanner from '../../assets/images/upload_banner.png'
+import { getAllinfo } from "../../api/user";
 export default {
   state: {
     banner:{
@@ -20,14 +21,20 @@ export default {
   },
   mutations: {
     updateBanner (state, banner) {
-      state.banner = banner
+      state.banner = {
+        indexbanner:banner[0].value||indexbanner,
+        aboutbanner:banner[1].value||aboutbanner,
+        productbanner:banner[2].value||productbanner,
+        hezuobanner:banner[3].value||hezuobanner,
+        appbanner,
+      }
     },
   },
   actions:{
     getAllinfo (store,obj) {
-      getAllinfo().then((data)=>{
-        console.log('获取到所有配置',data)
-        store.commit('updateBanner',data)
+      getAllinfo().then((res)=>{
+        console.log('获取到所有配置',res.data.data)
+        store.commit('updateBanner',res.data.data)
       })
     }
   }

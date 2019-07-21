@@ -6,7 +6,7 @@ export const login = ({ username, password }) => {
     password
   }
   return axios.request({
-    url: 'mobile/user/login',
+    url: 'user/login',
     data,
     method: 'post'
   })
@@ -14,7 +14,7 @@ export const login = ({ username, password }) => {
 
 export const getUserInfo = (token) => {
   return axios.request({
-    url: 'mobile/user/getUserByUserId',
+    url: 'user/getUserByUserId',
     data: {
       user_id:token
     },
@@ -34,7 +34,7 @@ export const logout = (token) => {
 // 获取用户列表
 export const getUserList = (data) => {
   return axios.request({
-    url: 'mobile/user/pageByUser',
+    url: 'user/pageByUser',
     data: data,
     headers:{
       "ticket":app.$store.state.user.userId
@@ -45,7 +45,7 @@ export const getUserList = (data) => {
 // 修改指定配置信息
 export const updateAppointInfo = (key,value) => {
   return axios.request({
-    url: 'mobile/dictionary/updateByKey',
+    url: 'dictionary/updateByKey',
     data: {key:key,value:value},
     headers:{
       "ticket":app.$store.state.user.userId
@@ -56,7 +56,7 @@ export const updateAppointInfo = (key,value) => {
 // 获取指定的配置信息
 export const getAppointInfo = (key) => {
   return axios.request({
-    url: 'mobile/dictionary/getByKey',
+    url: 'dictionary/getByKey',
     data: {key:key},
     method: 'post',
     headers:{
@@ -67,7 +67,7 @@ export const getAppointInfo = (key) => {
 // 获取所有的配置信息
 export const getAllinfo = () => {
   return axios.request({
-    url: 'mobile/dictionary/listByDictionary',
+    url: 'dictionary/listByDictionary',
     data: {},
     method: 'post',
     headers:{
