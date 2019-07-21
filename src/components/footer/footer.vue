@@ -2,7 +2,7 @@
     <div class="footer">
       <div class="footer-content">
         <div class="footer-left">
-          <a href="/#/"><img src="../../assets/images/logo.png" class="logo" /></a>
+          <a href="#/"><img src="../../assets/images/logo.png" class="logo" /></a>
           <div class="companyInfo">
             <p class="comp-phone">ShenZhen xxx Technology Co., Ltd</p>
             <p class="comp-name">客服电话 400-888-8888</p>
@@ -13,31 +13,31 @@
           <ul class="footer-list">
             <li class="first-list"><h4>关于我们</h4></li>
             <li class="list">
-              <a href="/#/about?type=1">公司简介</a>
+              <a href="#/about?type=1">公司简介</a>
             </li>
             <li class="list">
-              <a href="/#/about?type=2">创始人</a>
+              <a href="#/about?type=2">创始人</a>
             </li>
           </ul>
           <ul class="footer-list">
             <li class="first-list"><h4>产品</h4></li>
             <li class="list">
-              <a href="/#/product">非洲鼓</a>
+              <a href="#/product?type=1">非洲鼓</a>
             </li>
             <li class="list">
-              <a href="/#/product">吉他</a>
+              <a href="#/product?type=2">吉他</a>
             </li>
             <li class="list">
-              <a href="/#/product">钢琴</a>
+              <a href="#/product?type=3">钢琴</a>
             </li>
           </ul>
           <ul class="footer-list">
             <li class="first-list"><h4>合作</h4></li>
             <li class="list">
-              <a href="/#/coop">供应商</a>
+              <a href="#/coop">供应商</a>
             </li>
             <li class="list">
-              <a href="/#/about?type=3">联系我们</a>
+              <a href="#/about?type=3">联系我们</a>
             </li>
           </ul>
           <div class="clear"></div>
