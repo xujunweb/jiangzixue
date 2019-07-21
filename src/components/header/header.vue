@@ -3,7 +3,7 @@
     <div class="header" :class="{whitebg:whitebg}">
       <div class="header-content">
         <div class="logo" v-if="showLogo">
-          <a href="/#/"><img src="../../assets/images/logo-min.png" /></a>
+          <a href="#/"><img src="../../assets/images/logo-min.png" /></a>
         </div>
         <div class="tab">
           <span class="phone">客服电话：<b>8888-8888</b></span>
