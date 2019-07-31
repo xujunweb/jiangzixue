@@ -75,3 +75,26 @@ export const getAllinfo = () => {
     }
   })
 }
+//获取产品列表
+export const pageByProduct = (data) => {
+  return axios.request({
+    url: 'product/pageByProduct',
+    data: data,
+    method: 'post',
+    headers:{
+      "ticket":app.$store.state.user.userId
+    }
+  })
+}
+//保存咨询
+export const submitConsul = (data) => {
+  return axios.request({
+    url: 'consultation/insert',
+    data: data,
+    method: 'post',
+    headers:{
+      "ticket":app.$store.state.user.userId
+    }
+  })
+}
+

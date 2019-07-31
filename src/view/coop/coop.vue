@@ -70,8 +70,8 @@
           </FormItem>
           <FormItem label="性别：" prop="gender" class="hidelabel mr">
             <RadioGroup v-model="formValidate.gender">
-              <Radio label="1">男</Radio>
-              <Radio label="0">女</Radio>
+              <Radio label="0">男</Radio>
+              <Radio label="1">女</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem label="地区：" prop="city">
@@ -105,6 +105,7 @@
 import indexFooter from '@/components/footer/footer.vue'
 import indexHeader from '@/components/header/header.vue'
 import { mapGetters } from 'vuex'
+import { submitConsul } from "../../api/user";
 export default {
   name: "coop",
   data (){
@@ -114,7 +115,7 @@ export default {
         name: '',
         mail: '',
         city: '',
-        gender: '1',
+        gender: '0',
         phone: '',
         qq:'',
         desc: ''
@@ -144,10 +145,27 @@ export default {
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.$Message.success('Success!');
+          this.submitConsul()
         } else {
-          this.$Message.error('Fail!');
+          this.$Message.error('信息有误');
         }
+      })
+    },
+    //保存咨询请求
+    submitConsul(){
+      var data = {
+        name:this.formValidate.name,
+        sex:this.formValidate.gender,
+        phone:this.formValidate.phone,
+        qq:this.formValidate.qq,
+        email:this.formValidate.mail,
+        desc:this.formValidate.desc,
+        address:this.formValidate.city
+      }
+      submitConsul(data).then((res)=>{
+        this.$Message.success('提交成功!');
+      }).catch(()=>{
+        this.$Message.error('提交失败!');
       })
     },
     handleReset (name) {

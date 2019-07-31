@@ -12,6 +12,11 @@ export default {
       productbanner,
       hezuobanner,
       appbanner,
+      typeList:[
+        {value:1,label:'鼓'},
+        {value:2,label:'禁用'},
+        {value:3,label:'使用中'},
+      ]
     },
   },
   getters: {

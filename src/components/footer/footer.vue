@@ -13,31 +13,31 @@
           <ul class="footer-list">
             <li class="first-list"><h4>关于我们</h4></li>
             <li class="list">
-              <a href="#/about?type=1">公司简介</a>
+              <a @click="goRouter('about','1')">公司简介</a>
             </li>
             <li class="list">
-              <a href="#/about?type=2">创始人</a>
+              <a @click="goRouter('about','2')">创始人</a>
             </li>
           </ul>
           <ul class="footer-list">
             <li class="first-list"><h4>产品</h4></li>
             <li class="list">
-              <a href="#/product?type=1">非洲鼓</a>
+              <a @click="goRouter('product','1')">非洲鼓</a>
             </li>
             <li class="list">
-              <a href="#/product?type=2">吉他</a>
+              <a @click="goRouter('product','2')">吉他</a>
             </li>
             <li class="list">
-              <a href="#/product?type=3">钢琴</a>
+              <a @click="goRouter('product','3')">钢琴</a>
             </li>
           </ul>
           <ul class="footer-list">
             <li class="first-list"><h4>合作</h4></li>
             <li class="list">
-              <a href="#/coop">供应商</a>
+              <a @click="goRouter('coop','')">供应商</a>
             </li>
             <li class="list">
-              <a href="#/about?type=3">联系我们</a>
+              <a @click="goRouter('coop','3')">联系我们</a>
             </li>
           </ul>
           <div class="clear"></div>
@@ -70,7 +70,16 @@ export default {
     }
   },
   methods:{
-
+      //路由跳转
+    goRouter (name,type) {
+      this.$router.push({
+        name,
+        query:{
+          type,
+        }
+      })
+      window.scrollTo(0,0);
+    }
   }
 }
 </script>

@@ -8,15 +8,15 @@
       <div class="product-list">
         <div class="product-item" v-for="item in productlist">
           <div class="img-content">
-            <img :src="item.img" @click="handleView(item.img)">
+            <img :src="item.imgs" @click="handleView(item.imgs)">
           </div>
-          <h4 class="title">{{item.title}}</h4>
-          <div class="pice">市场价：<span>￥ {{item.pice}}</span></div>
-          <p class="jies">{{item.dec}}</p>
+          <h4 class="title">{{item.name}}</h4>
+          <div class="pice">市场价：<span>￥ {{item.price | formatMoney}}</span></div>
+          <p class="jies">{{item.desc}}</p>
         </div>
       </div>
       <div style="text-align: center">
-        <Page :total="total" show-elevator :page-size="10" :current.sync="page" @on-change="queyPage" />
+        <Page :total="total" show-elevator :page-size="pageSize" :current.sync="thisPage" @on-change="queyPage" />
       </div>
     </div>
     <indexFooter></indexFooter>
@@ -29,7 +29,7 @@
 <script>
   import indexFooter from '@/components/footer/footer.vue'
   import indexHeader from '@/components/header/header.vue'
-  import { getAllinfo } from  '@/api/user'
+  import { pageByProduct } from  '@/api/user'
   import { mapGetters } from 'vuex'
   export default {
     name: "product",
@@ -39,29 +39,10 @@
     data(){
       return{
         selectIndex:0,
-        page:1,   //当前页码
+        pageSize: 15,  //页面条数
+        thisPage:1,   //当前页面
         total:0,  //总数
         productlist:[
-          {title:'非洲手鼓',
-          pice:'价格',
-          img:'',
-          dec:'一个很厉害的手鼓'},
-          {title:'非洲手鼓',
-            pice:'价格',
-            img:'',
-            dec:'一个很厉害的手鼓我的字就是要多点，你能怎么样哈哈打不着我吧'},
-          {title:'非洲手鼓',
-            pice:'价格',
-            img:'',
-            dec:'一个很厉害的手鼓'},
-          {title:'非洲手鼓',
-            pice:'价格',
-            img:'',
-            dec:'一个很厉害的手鼓'},
-          {title:'非洲手鼓',
-            pice:'价格',
-            img:'',
-            dec:'一个很厉害的手鼓'},
         ],
         imgName: '',
         tabValue:'1',
@@ -84,17 +65,15 @@
       }else {
         this.tabValue = '1'
       }
-      // this.getAllinfo()
-      setTimeout(()=>{
-        this.total = 50
-      },1000)
+      this.pageByProduct()
     },
     methods:{
       clickTab(e){
         console.log('点击了tab',e)
         //切换分类，重置分页
-        this.page = 1
-        this.total = 100
+        this.tabValue = e
+        this.thisPage = 1
+        this.pageByProduct()
       },
       //查看大图
       handleView (name) {
@@ -102,19 +81,25 @@
         this.visible = true
       },
       //获取产品图片
-      getAllinfo () {
-        getAllinfo().then(res => {
-          const data = res.data
-          console.log('所有配置',res)
-          this.productlist = JSON.parse(data.data[5].value)
+      pageByProduct (p) {
+        let data = {
+          pageNum:p||this.thisPage, pageSize: this.pageSize,
+          type:this.tabValue,
+        }
+        pageByProduct(data).then(res => {
+          console.log('产品列表----',res)
+          this.productlist = res.data.data.list.length?res.data.data.list:[]
+          this.total = res.data.data.total
         }).catch(err => {
           console.log(err)
         })
       },
-      //点击分页
-      queyPage (e) {
-        console.log('页码改变了',e,this.page)
-      }
+      // 分页切换
+      queyPage (page) {
+        console.log(page)
+        this.thisPage = page
+        this.pageByProduct(page)
+      },
     }
   }
 </script>
