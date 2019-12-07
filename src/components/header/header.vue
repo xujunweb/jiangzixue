@@ -6,7 +6,7 @@
           <a href="#/"><img src="../../assets/images/logo-min.png" /></a>
         </div>
         <div class="tab">
-          <span class="phone">客服电话：<b>8888-8888</b></span>
+          <span class="phone">客服电话：<b>075523005896</b></span>
           <router-link :to="{name:item.herf}" v-for="item in tablist">
             <span :class="{hover:item.select,herf:true}">{{item.name}}</span>
           </router-link>
@@ -14,16 +14,19 @@
         <div class="clear"></div>
       </div>
     </div>
-    <!--<Carousel autoplay v-model="imgindex" loop class="home-banner" :autoplay-speed="speed">-->
-    <!--<CarouselItem v-for="item in imglist">-->
-    <!--<div class="demo-carousel">-->
-    <!--<img :src="item"/>-->
-    <!--</div>-->
-    <!--</CarouselItem>-->
-    <!--</Carousel>-->
+    <!-- 只有首页才有轮播图 -->
+    <Carousel autoplay v-model="imgindex" loop class="home-banner" :autoplay-speed="speed" v-if="bannerType==1">
+    <CarouselItem v-for="item in imglist">
+      <router-link to="jointwork" class="big-button">
+        <div class="demo-carousel">
+          <img :src="item"/>
+        </div>
+      </router-link>
+    </CarouselItem>
+    </Carousel>
     <slot></slot>
-    <img :src="banner" class="index-banner" :style="{height:bannerHeight+'px'}"/>
-    <img :src="shadowImg" class="shadow" />
+    <img :src="banner" class="index-banner" :style="{height:bannerHeight+'px'}" v-if="bannerType!=1" />
+    <!--<img :src="shadowImg" class="shadow" />-->
   </div>
 </template>
 <script>
@@ -65,10 +68,15 @@ export default {
         2:shadow2
       }
       return typeImg[this.bannerType]
+    },
+    imglist(){
+      return this.banner.split(',')
     }
   },
   data(){
     return{
+      imgindex:0,
+      speed:5000,
       tablist:[
         {name:'产品',herf:'product',select:false},
         {name:'关于我们',herf:'about',select:false},
@@ -87,6 +95,14 @@ export default {
 <style scoped lang="less">
   .banner{
     width: 100%;position: relative;background: #BFBFBF;overflow: hidden;
+    .demo-carousel{
+      img{
+        vertical-align: middle;
+      }
+    }
+    .home-banner{
+      height: 720px;
+    }
     .banner-content{
       width: 100%;height: 100%;z-index: 2;
       display: flex;align-items: center;justify-content: center;flex-direction: column;

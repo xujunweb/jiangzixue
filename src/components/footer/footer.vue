@@ -4,9 +4,9 @@
         <div class="footer-left">
           <a href="#/"><img src="../../assets/images/logo.png" class="logo" /></a>
           <div class="companyInfo">
-            <p class="comp-phone">ShenZhen xxx Technology Co., Ltd</p>
-            <p class="comp-name">客服电话 400-888-8888</p>
-            <p>深圳市xxx科技有限公司</p>
+            <p class="comp-phone">Shenzhen Pioneer Network Technology Co. , Ltd.</p>
+            <p class="comp-name">客服电话 075523005896</p>
+            <p>深圳市宝安区石岩同富裕工业区6号楼201</p>
           </div>
         </div>
         <div class="footer-right">

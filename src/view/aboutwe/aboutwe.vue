@@ -1,10 +1,10 @@
 <template>
     <div>
       <indexHeader :selectIndex="selectIndex" bannerType="2" :banner="banner.aboutbanner">
-        <div class="banner-content">
-          <div class="big-title">关于我们</div>
-          <div class="title-tip">ABOUT US</div>
-        </div>
+        <!--<div class="banner-content">-->
+          <!--<div class="big-title">关于我们</div>-->
+          <!--<div class="title-tip">ABOUT US</div>-->
+        <!--</div>-->
       </indexHeader>
       <div class="about-content">
         <Tabs :value="tabValue" type="card" @on-click="clickTab">
@@ -17,8 +17,10 @@
           <div class="tab-content">
             <div class="padding-content">
               <img src="" class="introduce-img"/>
-              <p class="introduce-text">先行者网络科技是一家富有创新能力，专注儿童教育的物联网寓教于乐教育平台。公司专注于乐器的游戏化自学，旨在通过科技的手段和游戏化的理念，守护学习艺术初心，放飞你的音乐梦。</p>
-              <p class="introduce-text">打破传统单一枯燥的线下教学形式，以全新的游戏化教程加可视化，充分释放青少年阶段爱玩的天性，让她孩子们在轻松好玩的状态下学习和娱乐。</p>
+              <p class="introduce-text">《深圳市先行者网络科技有限公司》是一家集研发创新和科技应用为一体的物联网科技公司。</p>
+              <p class="introduce-text">公司专注于智能科技与传统乐器的创新研发，希望通过自身的经验和技术将传统乐器与智能科技相结合，通过
+                科技手段和游戏化的理念，实现乐器与游戏互通应用。让每一位乐器爱好者，都可以通过娱乐的方式掌握一门
+                艺术特长，让学习乐器变的更简单，守护艺术初心，放飞你的音乐梦。</p>
             </div>
           </div>
         </div>
@@ -26,7 +28,7 @@
           <div class="tab-content">
             <div class="padding-content">
               <div class="toux">
-                <img src="" class="header" />
+                <img src="../../assets/images/aut.jpg" class="header" />
                 <div class="toux-info">
                   <div class="name">龚长胜</div>
                   <div class="jies">所学专业：中国音乐学院长笛专业<br/>中国社科院心理学<br/>西南科技大学工商企业管理<br/>持续创业者</div>
@@ -62,6 +64,34 @@
           </div>
         </div>
         <div label="联系我们" name="4" v-if="tabValue=='4'">
+          <div class="banner-img map">
+            <img src="../../assets/images/map.jpg">
+          </div>
+          <div class="form">
+            <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" :inline="true">
+              <FormItem label="姓名：" prop="name">
+                <Input v-model="formValidate.name" placeholder="请输入姓名" class="input"></Input>
+              </FormItem>
+              <FormItem label="地址：" prop="city">
+                <Input v-model="formValidate.city" placeholder="请输入地址" class="input"></Input>
+              </FormItem>
+              <FormItem label="手机：" prop="phone" class="mrm">
+                <Input v-model="formValidate.phone" placeholder="请输入手机号" class="input"></Input>
+              </FormItem>
+              <FormItem label="邮箱：" prop="mail">
+                <Input v-model="formValidate.mail" placeholder="请输入邮箱" class="input"></Input>
+              </FormItem>
+              <div>
+                <FormItem label="留言：" prop="desc" class="block">
+                  <Input v-model="formValidate.desc" type="textarea" :rows="5" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入留言"></Input>
+                </FormItem>
+              </div>
+              <FormItem class="botton-item">
+                <Button type="primary" @click="handleSubmit('formValidate')">提交咨询</Button>
+                <!--<Button @click="handleReset('formValidate')" style="margin-left: 8px">Reset</Button>-->
+              </FormItem>
+            </Form>
+          </div>
           <div class="tab-content">
 
           </div>
@@ -121,7 +151,27 @@ export default {
           周一至周五 9:30-18:00
           每月公司组织一次团建活动，让你在工作之余充分享受生活（如烧烤、K歌、聚餐、度假、等）`
         }
-      ]
+      ],
+      formValidate: {
+        name: '',
+        mail: '',
+        city: '',
+        gender: '0',
+        phone: '',
+        qq:'',
+        desc: ''
+      },
+      ruleValidate: {
+        name: [
+          { required: true, message: '请填写姓名', trigger: 'blur' }
+        ],
+        phone: [
+          { required: true, message: '请输入手机号', trigger: 'blur' },
+        ],
+        desc: [
+          { required: true, message: '请输入留言', trigger: 'blur' },
+        ]
+      }
     }
   },
   computed: {
@@ -147,7 +197,31 @@ export default {
     clickTab(e){
       console.log('点击了tab',e)
       this.tabValue = e
-    }
+    },
+    handleSubmit (name) {
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.submitConsul()
+        } else {
+          this.$Message.error('信息有误');
+        }
+      })
+    },
+    //保存咨询请求
+    submitConsul(){
+      var data = {
+        name:this.formValidate.name,
+        phone:this.formValidate.phone,
+        email:this.formValidate.mail,
+        desc:this.formValidate.desc,
+        address:this.formValidate.city
+      }
+      submitConsul(data).then((res)=>{
+        this.$Message.success('提交成功!');
+      }).catch(()=>{
+        this.$Message.error('提交失败!');
+      })
+    },
   }
 }
 </script>
@@ -196,5 +270,51 @@ export default {
       }
     }
     .nobor{border-bottom: none;}
+  }
+  .banner-img{
+    img{
+      position: relative;top: 0;width: 1920px;left: 50%;margin-left: -960px;vertical-align: middle;
+    }
+  }
+</style>
+<style lang="less">
+  .hidelabel{
+    .ivu-form-item-label{display: none;}
+    .ivu-form-item-content{margin-left: 10px !important;}
+  }
+  .ivu-form{
+    margin-top: 40px;
+    .ivu-form-item-label{
+      font-size: 16px;color: #000;padding-top: 12px;
+    }
+    .ivu-radio-wrapper{
+      font-size: 16px;
+    }
+    .ivu-form-item.block{
+      display: block;margin-right: 30px;
+    }
+    .ivu-form-item.botton-item{
+      display: block;text-align: center;margin-right: 0;
+      .ivu-form-item-content{margin-left: 0 !important;margin-right: 0;}
+    }
+    .block{
+      .ivu-input-wrapper{
+        textarea{
+          height: 150px !important;
+        }
+      }
+    }
+    .ivu-btn-primary{
+      background: #5f2bd9;width: 188px;height: 55px;text-align: center;
+      font-size: 24px;
+    }
+  }
+  .input{
+    width: 250px;
+    .ivu-input{height: 40px;}
+  }
+  .ivu-form-inline{
+    .mr{margin-right: 246px;}
+    /*.mrm{margin-right: 250px;}*/
   }
 </style>
