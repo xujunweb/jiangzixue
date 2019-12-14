@@ -1,10 +1,10 @@
 <template>
   <div>
     <indexHeader :selectIndex="selectIndex" :banner="banner.hezuobanner" bannerType="2">
-      <div class="banner-content">
-        <div class="big-title">合作</div>
-        <div class="title-tip">COOPERATION</div>
-      </div>
+      <!--<div class="banner-content">-->
+        <!--<div class="big-title">合作</div>-->
+        <!--<div class="title-tip">COOPERATION</div>-->
+      <!--</div>-->
     </indexHeader>
     <div class="coop-content">
       <h2 class="h2-title">酱子学乐器助学系统</h2>

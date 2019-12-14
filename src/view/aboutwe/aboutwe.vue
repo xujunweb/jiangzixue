@@ -65,35 +65,48 @@
         </div>
         <div label="联系我们" name="4" v-if="tabValue=='4'">
           <div class="banner-img map">
-            <img src="../../assets/images/map.jpg">
+            <a target="_blank" href="https://map.baidu.com/poi/%E9%BE%99%E5%8D%8E%E5%90%8C%E5%AF%8C%E8%A3%95%E5%B7%A5%E4%B8%9A%E5%9B%AD-6%E6%A0%8B/@12689766.888387097,2576265.42264977,11.79z?uid=c17f4324485f23e47cc876b2&ugc_type=3&ugc_ver=1&device_ratio=1&compat=1&querytype=detailConInfo&da_src=shareurl">
+              <img src="../../assets/images/map.jpg">
+            </a>
           </div>
-          <div class="form">
+          <div class="concat-big-title">[<span>意见留言</span>]</div>
+          <div class="concat-lit-title">请留下您的意见和建议，已便我们为您提供更优质的服务</div>
+          <div class="form about-me">
             <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" :inline="true">
-              <FormItem label="姓名：" prop="name">
-                <Input v-model="formValidate.name" placeholder="请输入姓名" class="input"></Input>
+              <FormItem label="" prop="name">
+                <Input v-model="formValidate.name" placeholder="请输入姓名" class="input">
+                  <span slot="prefix" class="form-label">姓名:</span>
+                </Input>
               </FormItem>
-              <FormItem label="地址：" prop="city">
-                <Input v-model="formValidate.city" placeholder="请输入地址" class="input"></Input>
+              <FormItem label="" prop="city">
+                <Input v-model="formValidate.city" placeholder="请输入地址" class="input">
+                  <span slot="prefix" class="form-label">地址:</span>
+                </Input>
               </FormItem>
-              <FormItem label="手机：" prop="phone" class="mrm">
-                <Input v-model="formValidate.phone" placeholder="请输入手机号" class="input"></Input>
+              <FormItem label="" prop="phone" class="mrm">
+                <Input v-model="formValidate.phone" placeholder="请输入手机号" class="input">
+                  <span slot="prefix" class="form-label">手机:</span>
+                </Input>
               </FormItem>
-              <FormItem label="邮箱：" prop="mail">
-                <Input v-model="formValidate.mail" placeholder="请输入邮箱" class="input"></Input>
+              <FormItem label="" prop="mail">
+                <Input v-model="formValidate.mail" placeholder="请输入邮箱" class="input">
+                  <span slot="prefix" class="form-label">邮箱:</span>
+                </Input>
               </FormItem>
               <div>
-                <FormItem label="留言：" prop="desc" class="block">
-                  <Input v-model="formValidate.desc" type="textarea" :rows="5" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入留言"></Input>
+                <FormItem label="" prop="desc" class="block">
+                  <Input v-model="formValidate.desc" type="textarea" :rows="5" :autosize="{minRows: 2,maxRows: 5}" placeholder="您想对我们说的话...">
+                  </Input>
                 </FormItem>
               </div>
               <FormItem class="botton-item">
-                <Button type="primary" @click="handleSubmit('formValidate')">提交咨询</Button>
+                <Button type="primary" @click="handleSubmit('formValidate')">提交您的信息</Button>
                 <!--<Button @click="handleReset('formValidate')" style="margin-left: 8px">Reset</Button>-->
               </FormItem>
             </Form>
           </div>
-          <div class="tab-content">
-
+          <div class="about-img">
+            <img src="../../assets/images/aboutmo.png"/>
           </div>
         </div>
       </div>
@@ -156,9 +169,7 @@ export default {
         name: '',
         mail: '',
         city: '',
-        gender: '0',
         phone: '',
-        qq:'',
         desc: ''
       },
       ruleValidate: {
@@ -233,6 +244,19 @@ export default {
   }
   .about-content{
     width: 1040px;margin: 0 auto;
+    .concat-big-title{
+      font-size: 30px;text-align: center;margin-top: 80px;
+      span{margin: 0 20px;}
+    }
+    .concat-lit-title{
+      font-size: 16px;line-height: 30px;text-align: center;margin-top: 20px;
+    }
+    .about-img{
+      position: relative;margin-top: 50px;
+      img{
+        position: relative;left: 50%;margin-left: -960px;
+      }
+    }
   }
   .tab-content{
     background: #f5f5f5;min-height: 200px;
@@ -282,39 +306,54 @@ export default {
     .ivu-form-item-label{display: none;}
     .ivu-form-item-content{margin-left: 10px !important;}
   }
-  .ivu-form{
-    margin-top: 40px;
-    .ivu-form-item-label{
-      font-size: 16px;color: #000;padding-top: 12px;
-    }
-    .ivu-radio-wrapper{
-      font-size: 16px;
-    }
-    .ivu-form-item.block{
-      display: block;margin-right: 30px;
-    }
-    .ivu-form-item.botton-item{
-      display: block;text-align: center;margin-right: 0;
-      .ivu-form-item-content{margin-left: 0 !important;margin-right: 0;}
-    }
-    .block{
-      .ivu-input-wrapper{
-        textarea{
-          height: 150px !important;
+  .about-me{
+    .ivu-form{
+      margin-top: 40px;
+      .ivu-input-prefix{
+        width: 60px;line-height: 40px;font-size: 16px;text-align: center;
+      }
+      .ivu-input-with-prefix{
+        padding-left: 60px;font-size: 16px;
+      }
+      .ivu-input{
+        border: 1px solid #ab9c9c;
+      }
+      .ivu-form-item-label{
+        font-size: 16px;color: #000;padding-top: 12px;
+      }
+      .ivu-radio-wrapper{
+        font-size: 16px;
+      }
+      textarea.ivu-input{
+        font-size: 16px;
+      }
+      .ivu-form-item.block{
+        display: block;margin-right: 30px;
+      }
+      .ivu-form-item.botton-item{
+        display: block;text-align: center;margin-right: 0;
+        .ivu-form-item-content{margin-left: 0 !important;margin-right: 0;}
+      }
+      .block{
+        .ivu-input-wrapper{
+          textarea{
+            height: 150px !important;
+          }
         }
       }
+      .ivu-btn-primary{
+        width: 530px;height: 60px;text-align: center;border: none;box-shadow: 0 0 5px #c3c3c3;
+        font-size: 24px;background: linear-gradient(left,#47b2fd,#05e0fd);margin-top: 30px;
+      }
     }
-    .ivu-btn-primary{
-      background: #5f2bd9;width: 188px;height: 55px;text-align: center;
-      font-size: 24px;
+    .input{
+      width: 425px;
+      .ivu-input{height: 40px;}
     }
-  }
-  .input{
-    width: 250px;
-    .ivu-input{height: 40px;}
-  }
-  .ivu-form-inline{
-    .mr{margin-right: 246px;}
-    /*.mrm{margin-right: 250px;}*/
+    .ivu-form-inline{
+      .ivu-form-item{margin-right: 0;}
+      .mr{margin-right: 246px;}
+      /*.mrm{margin-right: 250px;}*/
+    }
   }
 </style>
