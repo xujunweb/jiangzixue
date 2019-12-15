@@ -118,6 +118,7 @@
 import indexFooter from '@/components/footer/footer.vue'
 import indexHeader from '@/components/header/header.vue'
 import { mapGetters } from 'vuex'
+import { submitConsul } from "../../api/user";
 export default {
   name: "aboutwe",
   components:{
