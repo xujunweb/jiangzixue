@@ -46,7 +46,7 @@
       </div>
       <div class="record-infor">
         <div class="record-content">
-          <p class="record-text">粤 ICP 备1455434 号 公安网备案 334499984034<br/>经营许可证编号： 粤-20190039</p>
+          <p class="record-text">粤 ICP 备<a href="http://beian.miit.gov.cn">19065608</a> 号 公安网备案 334499984034<br/>经营许可证编号： 粤 20190039</p>
         </div>
       </div>
     </div>
